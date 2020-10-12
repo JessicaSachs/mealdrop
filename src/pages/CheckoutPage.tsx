@@ -1,11 +1,10 @@
 import React from 'react'
-import styled, { css } from 'styled-components'
+import styled from 'styled-components'
 import { useSelector } from 'react-redux'
 
 import { ShoppingCartDropdown } from '../components/shopping-cart'
 import { selectCartItems } from '../app-state/cart'
 import { breakpoints } from '../styles/breakpoints'
-import { Heading } from '../components/typography/Heading'
 import { MultiStepForm } from '../components/registration-form'
 
 const ContentContainer = styled.div`
@@ -40,22 +39,13 @@ const FormContainer = styled.div`
   border-radius: 8px;
 `
 
-const TopContainer = styled.div(
-  ({ theme: { color } }) => css`
-    min-height: 300px;
-    background: ${color.topBannerBackground};
-  `
-)
 
 export const CheckoutPage = () => {
   const cartItems = useSelector(selectCartItems)
 
   return (
     <div style={{ paddingBottom: '8rem', background: '#F9F9F9' }}>
-      <TopContainer className="container">
-        <Heading level={2}>Checkout</Heading>
-      </TopContainer>
-      <ContentContainer className="container">
+      <ContentContainer className="containers">
         <FormContainer>
           <MultiStepForm />
         </FormContainer>
